@@ -40,6 +40,12 @@ export default class Tokenizer {
             cfg.namedPlaceholderTypes,
             this.createStringPattern(cfg.stringTypes)
         );
+        let uppercaseArray = [].concat(cfg.reservedToplevelWords, cfg.reservedNewlineWords, cfg.reservedWords);
+        if (cfg.uppercaseArrayHandler) {
+            // to customize uppercase array
+            uppercaseArray = cfg.uppercaseArrayHandler(uppercaseArray);
+        }
+        this.UPPERCASE_REGEX = this.createUppercaeRegex(uppercaseArray);
     }
 
     createLineCommentRegex(lineCommentTypes) {
@@ -49,6 +55,11 @@ export default class Tokenizer {
     createReservedWordRegex(reservedWords) {
         const reservedWordsPattern = reservedWords.join("|").replace(/ /g, "\\s+");
         return new RegExp(`^(${reservedWordsPattern})\\b`, "i");
+    }
+
+    createUppercaeRegex(uppercaseWords) {
+        const uppercaseWordPatter = uppercaseWords.join("|").replace(/ /g, "\\s+");
+        return new RegExp(`^${uppercaseWordPatter}`, "i");
     }
 
     createWordRegex(specialChars = []) {

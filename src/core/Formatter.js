@@ -87,7 +87,16 @@ export default class Formatter {
                 formattedQuery = this.formatWithSpaces(token, formattedQuery);
             }
         });
+        if (this.cfg.uppercase) {
+            formattedQuery = this.formatUppercase(this.tokenizer.UPPERCASE_REGEX, formattedQuery);
+        }
         return formattedQuery;
+    }
+
+    formatUppercase(regex, query) {
+        return query.replace(regex, function(matched) {
+            return matched.toUpperCase();
+        });
     }
 
     formatLineComment(token, query) {
