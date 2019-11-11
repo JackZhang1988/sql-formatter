@@ -79,6 +79,7 @@ export default class StandardSqlFormatter {
      */
     constructor(cfg) {
         this.cfg = cfg;
+        this.reInitToken = cfg.reInitToken;
     }
 
     /**
@@ -86,9 +87,10 @@ export default class StandardSqlFormatter {
      *
      * @param {String} query The Standard SQL string
      * @return {String} formatted string
+     * @return {Boolean} 是否重新初始化tokenizer
      */
     format(query) {
-        if (!tokenizer) {
+        if (!tokenizer || this.reInitToken) {
             tokenizer = new Tokenizer({
                 reservedWords,
                 reservedToplevelWords,
@@ -99,6 +101,8 @@ export default class StandardSqlFormatter {
                 indexedPlaceholderTypes: ["?"],
                 namedPlaceholderTypes: ["@", ":"],
                 lineCommentTypes: ["#", "--"],
+                specialWordChars: ['://', '-\\S+-'],
+                uppercase: true,
                 ...this.cfg
             });
         }

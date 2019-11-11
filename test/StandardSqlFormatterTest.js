@@ -4,6 +4,22 @@ import behavesLikeSqlFormatter from "./behavesLikeSqlFormatter";
 describe("StandardSqlFormatter", function() {
     behavesLikeSqlFormatter();
 
+    it("uppercase word", function() {
+        expect(sqlFormatter.format(
+            `select * from`, {
+                uppercase: true,
+            }
+        )).toBe("SELECT\n  *\nFROM");
+    });
+
+    it("ignore special word chars", function() {
+        expect(sqlFormatter.format('add jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;', {
+            specialWordChars: ['://', '\\/', '\\-', '.*\\.jar'],
+            uppercase: true,
+            reInitToken: true,
+        })).toBe("ADD\n  jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;");
+    });
+
     it("formats short CREATE TABLE", function() {
         expect(sqlFormatter.format(
             "CREATE TABLE items (a INT PRIMARY KEY, b TEXT);"

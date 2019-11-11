@@ -1,5 +1,8 @@
 # SQL Formatter [![NPM version](https://img.shields.io/npm/v/sql-formatter.svg)](https://npmjs.com/package/sql-formatter) [![Build Status](https://travis-ci.org/zeroturnaround/sql-formatter.svg?branch=master)](https://travis-ci.org/zeroturnaround/sql-formatter) [![Coverage Status](https://coveralls.io/repos/github/zeroturnaround/sql-formatter/badge.svg?branch=master)](https://coveralls.io/github/zeroturnaround/sql-formatter?branch=master)
 
+
+>**This is a fork version from [SQL Formatter](https://github.com/zeroturnaround/sql-formatter)**
+
 **SQL Formatter** is a JavaScript library for pretty-printing SQL queries.
 It started as a port of a [PHP Library][], but has since considerably diverged.
 It supports [Standard SQL][], [Couchbase N1QL][], [IBM DB2][] and [Oracle PL/SQL][]  dialects.
@@ -11,7 +14,7 @@ It supports [Standard SQL][], [Couchbase N1QL][], [IBM DB2][] and [Oracle PL/SQL
 Get the latest version from NPM:
 
 ```
-npm install sql-formatter
+npm install @ks/sql-formatter
 ```
 
 ## Usage
@@ -47,6 +50,15 @@ Currently just four SQL dialects are supported:
 - **db2** - [IBM DB2][]
 - **pl/sql** - [Oracle PL/SQL][]
 
+### Uppercase Reserved Word
+
+```js
+sqlFormatter.format(query, {
+    uppercase: true,
+});
+```
+
+
 ### Placeholders replacement
 
 ```js
@@ -77,14 +89,6 @@ WHERE
 If you don't use a module bundler, clone the repository, run `npm install` and grab a file from `/dist` directory to use inside a `<script>` tag.
 This makes SQL Formatter available as a global variable `window.sqlFormatter`.
 
-## Contributing
-
-```bash
-# run linter and tests
-$ npm run check
-```
-
-...and you're ready to poke us with a pull request.
 
 ## License
 
