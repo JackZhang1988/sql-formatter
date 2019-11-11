@@ -59,6 +59,45 @@ sqlFormatter.format(query, {
 ```
 
 
+### Format For JAR Path
+
+**By Default, the formater will split JAR path with space, if you want to close these behavior, you need add 'specialWordChars' config to ignore some special word chars**
+
+For example: 
+
+```js
+sqlFormatter.default.format(`add jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;`});
+
+```
+
+these will output: 
+
+```
+add
+  jar viewfs: / / / home / system / hive / resources / reco / jars / reco_udf -1.0 - SNAPSHOT.jar;
+```
+
+after add specialWordChars config:
+
+
+```js
+sqlFormatter.default.format(`add jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;`, {
+    specialWordChars:['://', '-\\S+-'],
+    uppercase: true,
+});
+
+```
+
+these will output:
+
+```
+ADD
+  jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;
+```
+
+**So we highly sueggest you always add specialWordChars for default config**
+
+
 ### Placeholders replacement
 
 ```js

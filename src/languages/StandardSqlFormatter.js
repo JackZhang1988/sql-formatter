@@ -101,8 +101,6 @@ export default class StandardSqlFormatter {
                 indexedPlaceholderTypes: ["?"],
                 namedPlaceholderTypes: ["@", ":"],
                 lineCommentTypes: ["#", "--"],
-                specialWordChars: ['://', '-\\S+-'],
-                uppercase: true,
                 ...this.cfg
             });
         }
