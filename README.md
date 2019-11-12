@@ -82,7 +82,7 @@ after add specialWordChars config:
 
 ```js
 sqlFormatter.default.format(`add jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;`, {
-    specialWordChars:['://', '-\\S+-'],
+    specialWordChars:[':', '/', '\\-', '\\.'],
     uppercase: true,
 });
 

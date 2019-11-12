@@ -4,7 +4,11 @@ require('babel-register')({
 });
 
 const sqlFormatter = require('./src/sqlFormatter.js');
-const specialWordChars = ['://', '-\\S+-'];
+const specialWordChars = [':', '/', '\\-', '\\.'];
+
+const regx = new RegExp(`^([\\w${specialWordChars.join("")}]+)`);
+
+console.log(regx);
 
 const result = sqlFormatter.default.format(`add jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;`, {
     specialWordChars,
@@ -12,7 +16,11 @@ const result = sqlFormatter.default.format(`add jar viewfs:///home/system/hive/r
 });
 console.log(result);
 
-const result2 = sqlFormatter.default.format(`SELECT a#comment, here\nFROM b --comment`, {
+const result2 = sqlFormatter.default.format(`SELECT
+*
+FROM
+ac_db_binlog; 
+DELETE jar viewfs:///home/system/hive/resources/abtest/kuaishou-abtest-udf-latest.jar; `, {
     specialWordChars,
     uppercase: true,
 });
