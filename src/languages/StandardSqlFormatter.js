@@ -2,7 +2,7 @@ import Formatter from "../core/Formatter";
 import Tokenizer from "../core/Tokenizer";
 
 const reservedWords = [
-    "ACCESSIBLE", "ACTION", "AGAINST", "AGGREGATE", "ALGORITHM", "ALL", "ALTER", "ANALYSE", "ANALYZE", "AS", "ASC", "AUTOCOMMIT",
+    "ADD", "ACCESSIBLE", "ACTION", "AGAINST", "AGGREGATE", "ALGORITHM", "ALL", "ALTER", "ANALYSE", "ANALYZE", "AS", "ASC", "AUTOCOMMIT",
     "AUTO_INCREMENT",
     "BACKUP", "BEGIN", "BETWEEN", "BINLOG", "BOTH",
     "CASCADE", "CASE", "CHANGE", "CHANGED", "CHARACTER SET", "CHARSET", "CHECK", "CHECKSUM", "COLLATE", "COLLATION", "COLUMN", "COLUMNS",
@@ -42,7 +42,7 @@ const reservedWords = [
 ];
 
 const reservedToplevelWords = [
-    "ADD", "AFTER", "ALTER COLUMN", "ALTER TABLE",
+    "AFTER", "ALTER COLUMN", "ALTER TABLE",
     "DELETE FROM",
     "EXCEPT",
     "FETCH FIRST", "FROM",
