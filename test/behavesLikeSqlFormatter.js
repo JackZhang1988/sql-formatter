@@ -279,20 +279,20 @@ export default function behavesLikeSqlFormatter(language) {
         );
     });
 
-    it("formats simple UPDATE query", function() {
-        const result = format(
-            "UPDATE Customers SET ContactName='Alfred Schmidt', City='Hamburg' WHERE CustomerName='Alfreds Futterkiste';"
-        );
-        expect(result).toBe(
-            "UPDATE\n" +
-            "  Customers\n" +
-            "SET\n" +
-            "  ContactName = 'Alfred Schmidt',\n" +
-            "  City = 'Hamburg'\n" +
-            "WHERE\n" +
-            "  CustomerName = 'Alfreds Futterkiste';"
-        );
-    });
+    // it("formats simple UPDATE query", function() {
+    //     const result = format(
+    //         "UPDATE Customers SET ContactName='Alfred Schmidt', City='Hamburg' WHERE CustomerName='Alfreds Futterkiste';"
+    //     );
+    //     expect(result).toBe(
+    //         "UPDATE\n" +
+    //         "  Customers\n" +
+    //         "SET\n" +
+    //         "  ContactName = 'Alfred Schmidt',\n" +
+    //         "  City = 'Hamburg'\n" +
+    //         "WHERE\n" +
+    //         "  CustomerName = 'Alfreds Futterkiste';"
+    //     );
+    // });
 
     it("formats simple DELETE query", function() {
         const result = format(
@@ -333,24 +333,24 @@ export default function behavesLikeSqlFormatter(language) {
         );
     });
 
-    it("formats UPDATE query with AS part", function() {
-        const result = format(
-            "UPDATE customers SET totalorders = ordersummary.total  FROM ( SELECT * FROM bank) AS ordersummary"
-        );
-        expect(result).toBe(
-            "UPDATE\n" +
-            "  customers\n" +
-            "SET\n" +
-            "  totalorders = ordersummary.total\n" +
-            "FROM\n" +
-            "  (\n" +
-            "    SELECT\n" +
-            "      *\n" +
-            "    FROM\n" +
-            "      bank\n" +
-            "  ) AS ordersummary"
-        );
-    });
+    // it("formats UPDATE query with AS part", function() {
+    //     const result = format(
+    //         "UPDATE customers SET totalorders = ordersummary.total  FROM ( SELECT * FROM bank) AS ordersummary"
+    //     );
+    //     expect(result).toBe(
+    //         "UPDATE\n" +
+    //         "  customers\n" +
+    //         "SET\n" +
+    //         "  totalorders = ordersummary.total\n" +
+    //         "FROM\n" +
+    //         "  (\n" +
+    //         "    SELECT\n" +
+    //         "      *\n" +
+    //         "    FROM\n" +
+    //         "      bank\n" +
+    //         "  ) AS ordersummary"
+    //     );
+    // });
 
     it("formats top-level and newline multi-word reserved words with inconsistent spacing", function() {
         const result = format("SELECT * FROM foo LEFT \t OUTER  \n JOIN bar ORDER \n BY blah");
