@@ -59,8 +59,7 @@ export default class Tokenizer {
 
     createUppercaeRegex(uppercaseWords) {
         const uppercaseWordPatter = uppercaseWords.join("|").replace(/ /g, "\\s+");
-        // 排除关键字前后是【.】字符的情况
-        return new RegExp(`[^\\.](${uppercaseWordPatter})[^\\.]`, "ig");
+        return new RegExp(`\\b(${uppercaseWordPatter})\\b`, "ig");
     }
 
     createWordRegex(specialChars = []) {

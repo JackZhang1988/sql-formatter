@@ -28,7 +28,8 @@ const sqlFormatter = require('./src/sqlFormatter.js');
 
 console.log('变量最大化测试');
 
-const modeResult = sqlFormatter.default.format(`set hive.mode.tttt.select;
+const modeResult = sqlFormatter.default.format(`select * from xxx; 
+    set hive.mode.tttt.select;
     set mode.tttt;
     select * from ttt mode = 111;
 `, {

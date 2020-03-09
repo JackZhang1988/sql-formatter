@@ -94,7 +94,13 @@ export default class Formatter {
     }
 
     formatUppercase(regex, query) {
-        return query.replace(regex, function(matched) {
+        return query.replace(regex, function(matched, m1, m2, index, str) {
+            // 当匹配的字符前后字符为非空时，才进行最大化
+            if (str[index - 1] ) {
+                if ((/\S/).test(str[index - 1]) || (/\S/).test(str[index + matched.length])) {
+                    return matched;
+                }
+            }
             return matched.toUpperCase();
         });
     }
