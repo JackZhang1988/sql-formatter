@@ -4,27 +4,38 @@ require('babel-register')({
 });
 
 const sqlFormatter = require('./src/sqlFormatter.js');
-const specialWordChars = [':', '/', '\\-', '\\.'];
+// const specialWordChars = [':', '/', '\\-', '\\.'];
 
-const regx = new RegExp(`^([\\w${specialWordChars.join("")}]+)`);
+// const regx = new RegExp(`^([\\w${specialWordChars.join("")}]+)`);
 
-console.log(regx);
+// console.log(regx);
 
-const result = sqlFormatter.default.format(`add jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;`, {
-    specialWordChars,
+// const result = sqlFormatter.default.format(`add jar viewfs:///home/system/hive/resources/reco/jars/reco_udf-1.0-SNAPSHOT.jar;`, {
+//     specialWordChars,
+//     uppercase: true,
+// });
+// console.log(result);
+
+// const result2 = sqlFormatter.default.format(`SELECT
+// *
+// FROM
+// ac_db_binlog; 
+// DELETE jar viewfs:///home/system/hive/resources/abtest/kuaishou-abtest-udf-latest.jar; `, {
+//     specialWordChars,
+//     uppercase: true,
+// });
+// console.log(result2);
+
+console.log('变量最大化测试');
+
+const modeResult = sqlFormatter.default.format(`set hive.mode.tttt.select;
+    set mode.tttt;
+    select * from ttt mode = 111;
+`, {
     uppercase: true,
 });
-console.log(result);
 
-const result2 = sqlFormatter.default.format(`SELECT
-*
-FROM
-ac_db_binlog; 
-DELETE jar viewfs:///home/system/hive/resources/abtest/kuaishou-abtest-udf-latest.jar; `, {
-    specialWordChars,
-    uppercase: true,
-});
-console.log(result2);
+console.log(modeResult);
 
 // const uppercaseResult = sqlFormatter.default.format(`select author_id,
 // photo_id
