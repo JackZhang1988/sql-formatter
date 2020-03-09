@@ -38,7 +38,8 @@ const reservedWords = [
     "TABLE", "TABLES", "TEMPORARY", "TERMINATED", "THEN", "TO", "TRAILING", "TRANSACTIONAL", "TRUE", "TRUNCATE", "TYPE", "TYPES",
     "UNCOMMITTED", "UNIQUE", "UNLOCK", "UNSIGNED", "USAGE", "USE", "USING",
     "VARIABLES", "VIEW", "WHEN", "WITH", "WORK", "WRITE",
-    "YEAR_MONTH"
+    "YEAR_MONTH",
+    "SET"
 ];
 
 const reservedToplevelWords = [
@@ -52,7 +53,7 @@ const reservedToplevelWords = [
     "LIMIT",
     "MODIFY",
     "ORDER BY",
-    "SELECT", "SET CURRENT SCHEMA", "SET SCHEMA", "SET",
+    "SELECT", "SET CURRENT SCHEMA", "SET SCHEMA",
     "UNION ALL", "UNION", "UPDATE",
     "VALUES",
     "WHERE"
