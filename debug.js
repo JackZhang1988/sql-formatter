@@ -26,13 +26,28 @@ const sqlFormatter = require('./src/sqlFormatter.js');
 // });
 // console.log(result2);
 
-console.log('变量最大化测试');
+// console.log('变量最大化测试');
 
-const modeResult = sqlFormatter.default.format(`select * from xxx; 
+// const modeResult = sqlFormatter.default.format(`select * from xxx; 
+//     set hive.mode.tttt.select;
+//     set mode.tttt;
+//     select * from ttt mode = 111;
+// `, {
+//     uppercase: true,
+// });
+
+// console.log(modeResult);
+console.log('模板变量');
+
+const modeResult = sqlFormatter.default.format(`
+    <#assign sqlStr='if(a>b, 1,0)'>
+    select * from \${db}; 
     set hive.mode.tttt.select;
     set mode.tttt;
     select * from ttt mode = 111;
+    where d.p_hourmin >= '2000'
 `, {
+    specialWordChars: [':', '/', '\\-', '\\.', '${.*}', '<#.*>', '>=', '<='],
     uppercase: true,
 });
 
